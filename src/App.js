@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import { sendMsgToOpenAI } from './openai'; // Import the OpenAI function
 
 class App extends Component {
   constructor() {
@@ -9,7 +8,7 @@ class App extends Component {
       expanded: false,
       userInput: '',
       chatHistory: [],
-      isTyping: false, 
+      isTyping: false,
     };
     this.chatHistoryRef = React.createRef();
   }
@@ -30,29 +29,32 @@ class App extends Component {
       return;
     }
 
-    // Add user input to chat history
-    this.setState({ 
+    this.setState({
       chatHistory: [...chatHistory, { text: userInput, isUser: true }],
-      userInput: '', 
-      isTyping: true 
+      userInput: '',
+      isTyping: true
     });
 
     try {
-      const botResponse = await sendMsgToOpenAI(userInput);
+      const response = await fetch('http://localhost:5000/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt: userInput })
+      });
+      const data = await response.json();
 
-      // Add chatbot response to chat history
-      this.setState({ 
-        chatHistory: [...this.state.chatHistory, { text: botResponse, isUser: false }],
+      this.setState({
+        chatHistory: [...this.state.chatHistory, { text: data.response, isUser: false }],
         isTyping: false
       });
     } catch (error) {
-      console.error('Error sending request to OpenAI API:', error);
+      console.error('Error:', error);
       this.setState({
-        chatHistory: [...this.state.chatHistory, { text: 'Sorry, there was an error processing your message.', isUser: false }],
+        chatHistory: [...this.state.chatHistory, { text: 'Sorry, there was an error processing your request.', isUser: false }],
         isTyping: false
       });
     }
-  }
+  };
 
   handleKeyPress = (e) => {
     if (e.key === 'Enter') {
@@ -92,7 +94,7 @@ class App extends Component {
     );
 
     return chatMessages.concat(typingIndicator);
-  }
+  };
 
   render() {
     const { expanded, userInput } = this.state;
