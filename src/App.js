@@ -33,10 +33,10 @@ class App extends Component {
       chatHistory: [...chatHistory, { text: userInput, isUser: true }],
       userInput: '',
       isTyping: true
-    });
+    }, this.scrollToBottom); // Add the scrollToBottom call here
 
     try {
-      const response = await fetch('http://localhost:5000/api/chat', {
+      const response = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ prompt: userInput })
@@ -46,15 +46,15 @@ class App extends Component {
       this.setState({
         chatHistory: [...this.state.chatHistory, { text: data.response, isUser: false }],
         isTyping: false
-      });
+      }, this.scrollToBottom); // And also here
     } catch (error) {
       console.error('Error:', error);
       this.setState({
         chatHistory: [...this.state.chatHistory, { text: 'Sorry, there was an error processing your request.', isUser: false }],
         isTyping: false
-      });
+      }, this.scrollToBottom); // And here as well
     }
-  };
+};
 
   handleKeyPress = (e) => {
     if (e.key === 'Enter') {
