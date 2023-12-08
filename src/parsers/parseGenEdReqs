@@ -1,0 +1,22 @@
+function canHandle(userInput) {
+    const generalEducationKeywords = ['general education', 'gen ed', 'university requirements', 'gened'];
+    return generalEducationKeywords.some(keyword => userInput.toLowerCase().includes(keyword));
+}
+
+function process(userInput) {
+    // Identifying specific general education categories if mentioned
+    const genEdCategoryPattern = /general education\s*(requirements)?\s*(in)?\s*(\w+)?/i;
+    const match = userInput.match(genEdCategoryPattern);
+
+    if (match && match[3]) {
+        // Specific category is mentioned
+        return { category: match[3] };
+    }
+
+    // General query about gen ed requirements
+    return { isGeneralQuery: true };
+}
+module.exports = {
+    canHandle,
+    process
+};

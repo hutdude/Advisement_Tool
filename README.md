@@ -68,3 +68,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## 'node server.js' will run the backend server
+
+## After pulling project, create .env file with the variables 'OPENAI_API_KEY=key' 'PORT=3000' and 'SERVER_PORT=5000'

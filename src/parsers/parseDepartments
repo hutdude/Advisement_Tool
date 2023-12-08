@@ -1,0 +1,29 @@
+function canHandle(userInput) {
+    // Example logic: Check if the input includes keywords related to departments
+    const departmentKeywords = ['department', 'dept'];
+    return departmentKeywords.some(keyword => userInput.toLowerCase().includes(keyword));
+}
+function process(userInput) {
+    const departmentNameOrAbbreviationPattern = /(?:department|dept)\s+([A-Z]{2,4}|\w+)/i;
+    const match = userInput.match(departmentNameOrAbbreviationPattern);
+    if (match) {
+        return { departmentIdentifier: match[1] };  // Can be name or abbreviation
+    }
+    // const departmentNamePattern = /\bdepartment\s(\w+)/i;
+    // let match = userInput.match(departmentNamePattern);
+    // if (match) {
+    //     return { departmentName: match[1] };
+    // }
+
+    // const departmentAbbreviationPattern = /\bdept\s(\w+)/i;
+    // match = userInput.match(departmentAbbreviationPattern);
+    // if (match) {
+    //     return { departmentAbbreviation: match[1] };
+    // }
+    // If no specific pattern is matched, return null or a default value
+    return null;
+}
+module.exports = {
+    canHandle,
+    process
+};

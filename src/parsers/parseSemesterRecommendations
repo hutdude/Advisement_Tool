@@ -1,0 +1,23 @@
+function canHandle(userInput) {
+    // Logic to determine if the input relates to a department query
+    return userInput.toLowerCase().includes('semester recommendation', 'plan', 'schedule');
+}
+function process(userInput) {
+    const semesterPattern = /for (\w+) semester/;
+    const departmentPattern = /in (\w+) department/;
+    const coursePattern = /course like (\w+)/;
+
+    const semesterMatch = userInput.match(semesterPattern);
+    const departmentMatch = userInput.match(departmentPattern);
+    const courseMatch = userInput.match(coursePattern);
+
+    return {
+        semester: semesterMatch ? semesterMatch[1] : null,
+        department: departmentMatch ? departmentMatch[1] : null,
+        course: courseMatch ? courseMatch[1] : null
+    };
+}
+module.exports = {
+    canHandle,
+    process
+};

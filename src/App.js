@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import axios from 'axios'
 
 class App extends Component {
   constructor() {
@@ -9,6 +10,7 @@ class App extends Component {
       userInput: '',
       chatHistory: [],
       isTyping: false,
+      context: {},
     };
     this.chatHistoryRef = React.createRef();
   }
@@ -24,37 +26,43 @@ class App extends Component {
   };
 
   handleUserSubmit = async () => {
-    const { userInput, chatHistory } = this.state;
+    const { userInput, chatHistory, context } = this.state; // Add a context variable
     if (userInput.trim() === '') {
       return;
     }
-
+  
     this.setState({
       chatHistory: [...chatHistory, { text: userInput, isUser: true }],
       userInput: '',
       isTyping: true
-    }, this.scrollToBottom); // Add the scrollToBottom call here
-
+    }, this.scrollToBottom);
+  
     try {
-      const response = await fetch('/api/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ prompt: userInput })
+      // Constructing the prompt for OpenAI
+      const prompt = `As an academic advisor for Mississippi State University, respond to the following query:\n\n${userInput}`;
+  
+      // Sending request to your backend including the context
+      const response = await axios.post('http://localhost:5000/api/chat', {
+        prompt: prompt,
+        context: context // Include the updated context
       });
-      const data = await response.json();
-
+  
+      const data = await response.data;
+  
       this.setState({
-        chatHistory: [...this.state.chatHistory, { text: data.response, isUser: false }],
+        chatHistory: [...this.state.chatHistory, { text: data.response || data.followUp, isUser: false }],
+        context: data.context || {}, // Update the context
         isTyping: false
-      }, this.scrollToBottom); // And also here
+      }, this.scrollToBottom);
     } catch (error) {
-      console.error('Error:', error);
-      this.setState({
-        chatHistory: [...this.state.chatHistory, { text: 'Sorry, there was an error processing your request.', isUser: false }],
-        isTyping: false
-      }, this.scrollToBottom); // And here as well
-    }
-};
+        console.error('Error:', error);
+        console.error('Error Details:', error.response || error.message);
+        this.setState({
+          chatHistory: [...this.state.chatHistory, { text: 'Sorry, there was an error processing your request.', isUser: false }],
+          isTyping: false
+        }, this.scrollToBottom);
+      }
+    };
 
   handleKeyPress = (e) => {
     if (e.key === 'Enter') {
