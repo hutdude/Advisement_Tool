@@ -75,4 +75,3 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 ## 'node server.js' will run the backend server
 
 ## After pulling project, create .env file with the variables 'OPENAI_API_KEY=key' 'PORT=3000' and 'SERVER_PORT=5000'
->>>>>>> mitch_branch
