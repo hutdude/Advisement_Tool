@@ -1,0 +1,21 @@
+function canHandle(userInput) {
+    // Logic to determine if the input relates to a department query
+    return userInput.toLowerCase().includes('program', 'department');
+}
+
+function process(userInput) {
+    // Example: Extract department and requirement type
+    const requirementPattern = /(\w+) department.*requirement (type|for) (\w+)/i;
+    const match = userInput.match(requirementPattern);
+
+    if (match) {
+        return { department: match[1], requirementType: match[3] };
+    }
+
+    return null;
+}
+
+module.exports = {
+    canHandle,
+    process
+};

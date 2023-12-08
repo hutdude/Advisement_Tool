@@ -1,0 +1,23 @@
+function canHandle(userInput) {
+    // Keywords for requirement types
+    const requirementTypeKeywords = ['requirement type', 'type of requirement', 'kinds of requirement'];
+    return requirementTypeKeywords.some(keyword => userInput.toLowerCase().includes(keyword));
+}
+
+function process(userInput) {
+    // Extract specific requirement type if mentioned
+    const requirementTypePattern = /requirement type\s*(for)?\s*(\w+)?/;
+    const match = userInput.match(requirementTypePattern);
+
+    if (match && match[2]) {
+        // Specific requirement type is mentioned
+        return { requirementType: match[2] };
+    }
+
+    // General query about requirement types
+    return { isGeneralQuery: true };
+}
+module.exports = {
+    canHandle,
+    process
+};

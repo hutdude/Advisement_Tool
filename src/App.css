@@ -1,0 +1,108 @@
+.chatbot-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: height 0.5s;
+  display: flex;
+  flex-direction: column;
+}
+
+.collapsed {
+  height: 40px;
+}
+
+.expanded {
+  height: 350px;
+}
+
+.chat-header {
+  background-color: maroon;
+  border: 1px solid maroon;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.chat-history {
+  flex: 1;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  overflow-y: auto;
+}
+
+.chat-bubble {
+  margin: 5px;
+  padding: 10px;
+  border-radius: 8px;
+  max-width: 70%;
+  word-wrap: break-word; 
+}
+
+.user {
+  background-color: maroon;
+  color: white;
+  align-self: flex-end;
+}
+
+.chatbot {
+  background-color: #ccc;
+  align-self: flex-start;
+}
+
+.typing-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.typing-indicator span {
+  height: 5px;
+  width: 5px;
+  margin: 0 3px; 
+  background-color: #9E9EA1;
+  border-radius: 50%;
+  opacity: 0.5;
+  animation: blink 1s infinite 0.3333s;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 1;
+  }
+}
+
+.chat-input {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+input {
+  flex: 1;
+  border: none;
+  border-radius: 5px;
+  padding: 8px;
+  margin-right: 10px;
+  border: 1px solid #030303;
+}
+
+button {
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 15px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: rgb(65, 61, 61);
+}

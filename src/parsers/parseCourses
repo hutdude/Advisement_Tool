@@ -1,0 +1,25 @@
+function canHandle(userInput) {
+    // Check for keywords or patterns indicating a course query
+    const courseKeywords = ['course', 'class'];
+    return courseKeywords.some(keyword => userInput.toLowerCase().includes(keyword));
+}
+function process(userInput) {
+    const courseCodePattern = /[A-Z]{2,4}\s\d{3,4}/;
+    const courseTitlePattern = /course (?:on|about|titled)?\s*(.*)/i;
+
+    let match = userInput.match(courseCodePattern);
+    if (match) {
+        return { courseCode: match[0] };
+    }
+
+    match = userInput.match(courseTitlePattern);
+    if (match) {
+        return { courseTitle: match[1] };
+    }
+
+    return null;
+}
+module.exports = {
+    canHandle,
+    process
+};
