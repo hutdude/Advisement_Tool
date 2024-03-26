@@ -1,11 +1,15 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import {createRoot} from 'react-dom/client';
 import './index.css';
+import StudentView from './components/StudentView.tsx' 
 import App from './App'; // Assuming you have an App.js for your React app
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+
+createRoot(
+  
   document.getElementById('root')
-);
+).render(<React.StrictMode>
+  <App />
+  <StudentView />
+</React.StrictMode>)
+

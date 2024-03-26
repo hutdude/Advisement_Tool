@@ -108,6 +108,7 @@ class App extends Component {
     const { expanded, userInput } = this.state;
 
     return (
+
       <div className={`chatbot-container ${expanded ? 'expanded' : 'collapsed'}`}>
         <div className="chat-header" onClick={this.toggleChatbot}>
           Chatbot

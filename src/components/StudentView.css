@@ -1,0 +1,10 @@
+.container-fluid {
+    height: 100%;
+  }
+  .row {
+    height: 100%;
+  }
+  
+  .border {
+    border: 1px solid #ccc;
+  }

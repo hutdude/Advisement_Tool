@@ -1,0 +1,20 @@
+.circular-button {
+    border-radius: 50%;
+    width: 50px; /* Adjust as needed */
+    height: 50px; /* Adjust as needed */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0b131b; /* Default button color */
+    color: #fff;
+    text-decoration: none;
+  }
+
+#Footer {
+    height: 10vh
+    
+}
+
+ul{
+  padding-top: 15px !important;
+}

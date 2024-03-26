@@ -9,16 +9,16 @@ app.use(cors());
 const Filter = require('bad-words');
 
 //querying file
-const dbQueries = require('./src/db/dbQueries');
+const dbQueries = require('../src/db/dbQueries');
 
 
 //parsing files
-const parseDepartments = require('./src/parsers/parseDepartments');
-const parseCourses = require('./src/parsers/parseCourses');
-const parseGenEdReqs = require('./src/parsers/parseGenEdReqs');
-const parseProgramRequirements = require('./src/parsers/parseProgramRequirements');
-const parseRequirementType = require('./src/parsers/parseRequirementType');
-const parseSemesterRecommendations = require('./src/parsers/parseSemesterRecommendations');
+const parseDepartments = require('../src/parsers/parseDepartments');
+const parseCourses = require('../src/parsers/parseCourses');
+const parseGenEdReqs = require('../src/parsers/parseGenEdReqs');
+const parseProgramRequirements = require('../src/parsers/parseProgramRequirements');
+const parseRequirementType = require('../src/parsers/parseRequirementType');
+const parseSemesterRecommendations = require('../src/parsers/parseSemesterRecommendations');
 
 
 // Initialize the bad-words filter
