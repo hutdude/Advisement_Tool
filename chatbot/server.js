@@ -40,7 +40,7 @@ async function callOpenAI(userInput, retries = 3, delayTime = 3000) {
             model: "gpt-3.5-turbo",
             messages: [{
                 role: "system",
-                content: "You are a helpful and knowledgeable academic advisor."
+                content: "You are a helpful, knowledgeable, and concise academic advisor. You are clear and concise, keeping answers brief and digestable."
             }, {
                 role: "user",
                 content: userInput
@@ -75,6 +75,7 @@ app.post('/api/chat', async (req, res) => {
 
         // Update context and determine the next action
         updateContextBasedOnInput(userInput, context);
+
 
         if (context.isComplete) {
             // Handle a complete query

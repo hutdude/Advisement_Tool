@@ -8,11 +8,13 @@ function process(userInput) {
     const courseTitlePattern = /course (?:on|about|titled)?\s*(.*)/i;
 
     let match = userInput.match(courseCodePattern);
+    console.log(match)
     if (match) {
         return { courseCode: match[0] };
     }
 
-    match = userInput.match(courseTitlePattern);
+    match = userInput.match(courseTitlePattern);x
+    console.log(match)
     if (match) {
         return { courseTitle: match[1] };
     }

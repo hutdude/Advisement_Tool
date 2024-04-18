@@ -1,6 +1,8 @@
 function canHandle(userInput) {
     // Logic to determine if the input relates to a department query
-    return userInput.toLowerCase().includes('semester recommendation', 'plan', 'schedule');
+    return userInput.toLowerCase().includes('semester recommendation') || 
+           userInput.toLowerCase().includes('plan') || 
+           userInput.toLowerCase().includes('schedule');
 }
 function process(userInput) {
     const semesterPattern = /for (\w+) semester/;
