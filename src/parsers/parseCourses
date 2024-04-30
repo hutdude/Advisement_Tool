@@ -4,7 +4,7 @@ function canHandle(userInput) {
     return courseKeywords.some(keyword => userInput.toLowerCase().includes(keyword));
 }
 function process(userInput) {
-    const courseCodePattern = /[A-Z]{2,4}\s\d{3,4}/;
+    const courseCodePattern = /[a-zA-Z]{2,4}\s\d{3,4}/i;    ;
     const courseTitlePattern = /course (?:on|about|titled)?\s*(.*)/i;
 
     let match = userInput.match(courseCodePattern);

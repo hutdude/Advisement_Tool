@@ -105,7 +105,8 @@ function updateContextBasedOnInput(userInput, context) {
     if (parseDepartments.canHandle(userInput)) {
         const departmentDetails = parseDepartments.process(userInput);
         if (departmentDetails) {
-            context.departmentIdentifier = departmentDetails.departmentIdentifier;
+            sqlReturn = dbQueries.getDepartmentDetails(departmentDetails)
+            context.departmentIdentifier = sqlReturn;
             context.queryType = 'department';
             context.isComplete = true;
         }

@@ -6,6 +6,7 @@ function canHandle(userInput) {
 function process(userInput) {
     const departmentNameOrAbbreviationPattern = /(?:department|dept)\s+([A-Z]{2,4}|\w+)/i;
     const match = userInput.match(departmentNameOrAbbreviationPattern);
+    console.log(match)
     if (match) {
         return { departmentIdentifier: match[1] };  // Can be name or abbreviation
     }

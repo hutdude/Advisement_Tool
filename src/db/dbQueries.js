@@ -9,7 +9,7 @@ const pool = require('./dbConnect');
 //         query = 'SELECT * FROM Departments WHERE name = ? OR abbreviation = ?';
 //     }
 
-//     const [rows] = await pool.query(query, [departmentIdentifier, departmentIdentifier]);
+//     const [rows] = await pool.query(query, [departmentIdentifier.departmentIdentifier, departmentIdentifier.departmentIdentifier]);
 //     return rows;
 // }
 
@@ -67,6 +67,7 @@ const pool = require('./dbConnect');
 
 
 async function getDepartmentDetails(identifier) {
+    console.log(identifier)
     const query = `
         SELECT * FROM Departments 
         WHERE department_id = ? OR name = ? OR abbreviation = ?

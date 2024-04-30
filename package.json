@@ -60,6 +60,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "http-proxy-middleware": "^2.0.6"
+    "http-proxy-middleware": "^2.0.6",
+    "jest": "^27.5.1"
   }
 }
