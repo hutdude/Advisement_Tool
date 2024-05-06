@@ -2,11 +2,14 @@ import React from "react";
 import ProgressBar from "./widgets/ProgressBar.tsx";
 import Calendar from "react-calendar";
 import "./Body.css";
+import AdvisorCard from "./widgets/AdvisorCard.tsx";
 
 interface Props {
   gpa: number;
   hoursCompleted: number;
   hoursNeeded: number;
+  advisor: string;
+  advisorEmail: string;
 }
 
 function Body(prop: Props) {
@@ -25,7 +28,10 @@ function Body(prop: Props) {
         <div className="col-5">
           <div className="row" style={{ height: "50%" }}>
             <div className="col-6">Plan</div>
-            <div className="col-6">Advisor</div>
+            <AdvisorCard
+              advisor={prop.advisor}
+              advisorEmail={prop.advisorEmail}
+            />
           </div>
           <div className="row">
             <div className="col-6">Resources</div>

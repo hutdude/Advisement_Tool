@@ -14,6 +14,8 @@ function StudentView() {
   studentInfo.set("gpa", 2.5);
   studentInfo.set("hoursCompleted", 110);
   studentInfo.set("hoursNeeded", 444);
+  studentInfo.set("advisor", "Adyson Poole");
+  studentInfo.set("advisorEmail", "poole@cse.msstate.edu");
 
   return (
     <div className="container-fluid">
@@ -27,6 +29,8 @@ function StudentView() {
           gpa={studentInfo.get("gpa")}
           hoursCompleted={studentInfo.get("hoursCompleted")}
           hoursNeeded={studentInfo.get("hoursNeeded")}
+          advisor={studentInfo.get("advisor")}
+          advisorEmail={studentInfo.get("advisorEmail")}
         />
 
         <Footer />
